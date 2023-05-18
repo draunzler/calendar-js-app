@@ -52,3 +52,17 @@ const renderCalendar = () => {
     });
   });
 };
+renderCalendar();
+prevNextIcon.forEach(icon => { 
+    icon.addEventListener("click", () => { 
+        currMonth = icon.id === "prev" ? currMonth - 1 : currMonth + 1;
+        if(currMonth < 0 || currMonth > 11) { 
+            date = new Date(currYear, currMonth, new Date().getDate());
+            currYear = date.getFullYear(); 
+            currMonth = date.getMonth(); 
+        } else {
+            date = new Date(); 
+        }
+        renderCalendar(); 
+    });
+});
